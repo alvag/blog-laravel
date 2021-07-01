@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PostController@index')->name('home');
 
 Route::resource('posts', 'PostController')->except('index');
+
+Route::get('admin', function () {
+    return view('admin.dashboard');
+});
