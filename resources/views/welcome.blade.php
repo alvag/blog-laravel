@@ -23,9 +23,9 @@
                                 more</a>
                         </div>
                         <div class="tags container-flex">
-                            <span class="tag c-gray-1 text-capitalize">#yosemite</span>
-                            <span class="tag c-gray-1 text-capitalize">#peak</span>
-                            <span class="tag c-gray-1 text-capitalize">#explorer</span>
+                            @foreach ($post->tags as $tag)
+                                <span class="tag c-gray-1 text-capitalize">#{{ $tag->name }}</span>
+                            @endforeach
                         </div>
                     </footer>
                 </div>
