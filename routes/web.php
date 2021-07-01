@@ -17,6 +17,8 @@ Route::get('/', 'PostController@index')->name('home');
 
 Route::resource('posts', 'PostController')->except('index');
 
-Route::get('admin', function () {
+Route::get('home', function () {
     return view('admin.dashboard');
-});
+})->middleware('auth');
+
+Auth::routes(['register' => false]);
