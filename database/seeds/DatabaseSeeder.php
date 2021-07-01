@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,16 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $categories = factory( \App\Category::class, 10 )->create();
+        $categories = factory(Category::class, 10)->create();
 
-        factory( Post::class, 50 )
+        factory(Post::class, 50)
             ->make()
-            ->each( function ( $post ) use ( $categories ) {
+            ->each(function ($post) use ($categories) {
                 $category = $categories->random();
 
                 $post->category_id = $category->id;
 
                 $post->save();
-            } );
+            });
     }
 }
