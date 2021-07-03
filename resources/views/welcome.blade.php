@@ -10,6 +10,7 @@
                         <div class="date">
                             <span class="c-gray-1">{{ $post->published_at->format('d M Y') }}</span>
                         </div>
+
                         <div class="post-category">
                             <span class="category text-capitalize">{{ $post->category->name }}</span>
                         </div>
@@ -19,7 +20,7 @@
                     <p>{{ $post->excerpt }}</p>
                     <footer class="container-flex space-between">
                         <div class="read-more">
-                            <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="text-uppercase c-green">read
+                            <a href="#" class="text-uppercase c-green">read
                                 more</a>
                         </div>
                         <div class="tags container-flex">

@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
+    <title>Blog</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="/adminlte/bootstrap/css/bootstrap.min.css">
@@ -16,6 +16,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/adminlte/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="/adminlte/Ionicons/css/ionicons.min.css">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="/adminlte/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -244,14 +248,14 @@ desired effect
                         <img src="/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                        <p>{{ auth()->user()->name }}</p>
                         <!-- Status -->
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
 
                 <!-- search form (Optional) -->
-                <form action="#" method="get" class="sidebar-form">
+                {{-- <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
@@ -260,27 +264,11 @@ desired effect
                             </button>
                         </span>
                     </div>
-                </form>
+                </form> --}}
                 <!-- /.search form -->
 
                 <!-- Sidebar Menu -->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">HEADER</li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                @include('admin.partials.nav')
                 <!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->
@@ -290,14 +278,7 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Page Header
-                    <small>Optional description</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
-                </ol>
+                @yield('header')
             </section>
 
             <!-- Main content -->
@@ -405,13 +386,32 @@ desired effect
     <!-- jQuery 3 -->
     <script src="/adminlte/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="adminlte/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="/adminlte/js/adminlte.min.js"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+
+
+    <script>
+        $(function() {
+            $('#posts-table').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
 </body>
 
 </html>
