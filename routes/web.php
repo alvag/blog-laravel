@@ -19,11 +19,12 @@ Route::get('/', 'PagesController@home');
 
 // Route::resource('posts', 'PostController')->except('index');
 
-Route::get('home', 'HomeController@index');
 
 
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')->group(function () {
+        Route::get('/', 'AdminController@index')->name('dashboard');
         Route::get('posts', 'PostController@index')->name('admin.posts.index');
+        Route::get('posts/create', 'PostController@create')->name('admin.posts.create');
     });

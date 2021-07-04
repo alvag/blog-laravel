@@ -17,8 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Ionicons -->
     <link rel="stylesheet" href="/adminlte/Ionicons/css/ionicons.min.css">
 
-    <!-- DataTables -->
-    <link rel="stylesheet" href="/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    @stack('styles')
 
     <!-- Theme style -->
     <link rel="stylesheet" href="/adminlte/css/AdminLTE.min.css">
@@ -388,9 +387,9 @@ desired effect
     <!-- Bootstrap 3.3.7 -->
     <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- DataTables -->
-    <script src="/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    @stack('scripts')
+
 
     <!-- AdminLTE App -->
     <script src="/adminlte/js/adminlte.min.js"></script>
@@ -400,18 +399,7 @@ desired effect
      user experience. -->
 
 
-    <script>
-        $(function() {
-            $('#posts-table').DataTable({
-                'paging': true,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': true,
-                'info': true,
-                'autoWidth': false
-            })
-        })
-    </script>
+
 </body>
 
 </html>
