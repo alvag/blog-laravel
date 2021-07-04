@@ -17,7 +17,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/', 'PagesController@home');
 
-// Route::resource('posts', 'PostController')->except('index');
+Route::get('blog/{id}', 'PostsController@show');
 
 
 
