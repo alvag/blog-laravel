@@ -14,7 +14,8 @@
 
 @section('content')
     <div class="row">
-        <form>
+        <form method="POST" action="{{ route('admin.posts.store') }}">
+            @csrf
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-body">
@@ -51,14 +52,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="excerpt">Extracto</label>
-                            <textarea name="excerpt" type="text" id="excerpt" class="form-control"
-                                placeholder="Extracto publicación"></textarea>
-                        </div>
-
-                        <div class="form-group">
                             <label>Categorías:</label>
-                            <select class="form-control">
+                            <select name="category_id" class="form-control">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -68,12 +63,20 @@
 
                         <div class="form-group">
                             <label>Etiquetas</label>
-                            <select class="form-control select2" multiple="multiple"
+                            <select name="tags[]" class="form-control select2" multiple="multiple"
                                 data-placeholder="Selecciona una o más etiquetas" style="width: 100%">
                                 @foreach ($tags as $tag)
                                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                 @endforeach
                         </div>
+
+                        <div class="form-group">
+                            <label for="excerpt">Extracto</label>
+                            <textarea name="excerpt" type="text" id="excerpt" class="form-control"
+                                placeholder="Extracto publicación"></textarea>
+                        </div>
+
+
 
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar Publicación</button>

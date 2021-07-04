@@ -27,4 +27,5 @@ Route::prefix('admin')
         Route::get('/', 'AdminController@index')->name('dashboard');
         Route::get('posts', 'PostController@index')->name('admin.posts.index');
         Route::get('posts/create', 'PostController@create')->name('admin.posts.create');
+        Route::post('posts', 'PostController@store')->name('admin.posts.store');
     });

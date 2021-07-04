@@ -37,7 +37,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return Post::create($request->all());
+
+        // return $request->all();
+
+        $post = new Post;
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $post->excerpt = $request->get('excerpt');
+        $post->published_at = $request->get('published_at');
+        $post->category_id = $request->get('category_id');
+        $post->save();
+        $post->tags()->attach($request->get('tags'));
+
+        return back()->with('flash', 'Tu publicación ha sido creada');
     }
 
     /**
