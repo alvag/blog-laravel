@@ -7,6 +7,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tag;
+use Str;
 
 class PostController extends Controller
 {
@@ -47,6 +48,7 @@ class PostController extends Controller
 
         $post = new Post;
         $post->title = $request->get('title');
+        $post->url = Str::slug($request->get('title'));
         $post->body = $request->get('body');
         $post->excerpt = $request->get('excerpt');
         $post->published_at = $request->get('published_at');

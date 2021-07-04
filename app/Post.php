@@ -29,4 +29,9 @@ class Post extends Model
         return $query->whereNotNull('published_at')
             ->where('published_at', '<=', Carbon::now());
     }
+
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
 }
