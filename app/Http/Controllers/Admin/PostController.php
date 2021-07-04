@@ -37,9 +37,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //return Post::create($request->all());
-
-        // return $request->all();
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'category_id' => 'required',
+            'tags' => 'required',
+            'excerpt' => 'required',
+        ]);
 
         $post = new Post;
         $post->title = $request->get('title');
